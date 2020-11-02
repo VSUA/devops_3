@@ -1,0 +1,5 @@
+---
+- name: install php and php modules
+  apt: name={{ item }}        update_cache=yes
+         state=latest
+# tasks file for php

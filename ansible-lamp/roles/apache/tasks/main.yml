@@ -1,0 +1,12 @@
+---
+- name: Install apache
+  apt:
+    name: apache2
+    update_cache: yes
+
+- name: Enable apache
+  systemd:
+    name: apache2
+    enabled: true
+...
+# tasks file for apache

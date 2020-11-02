@@ -1,0 +1,23 @@
+---
+- name: Download NoviNano site
+  get_url:
+    url: https://github.com/mplesha/NoviNano/releases/download/v1.0/20180706_novinano_mt_b2a03d4e0cbc53e87026180706071957_archive.zip
+    dest: /var/www/html/
+
+- name: Download NoviNano installer
+  get_url:
+    url: https://github.com/mplesha/NoviNano/releases/download/v1.0/20180706_novinano_mt_b2a03d4e0cbc53e87026180706071957_installer.php
+    dest: /var/www/html/
+
+- name: Rename installer
+  command: mv /var/www/html/20180706_novinano_mt_b2a03d4e0cbc53e87026180706071957_installer.php /var/www/html/installer.php
+
+- name: Change owner for /var/www/html
+  command: chown -R www-data:www-data /var/www/html
+
+- name: Restart apache
+  systemd:
+    name: apache2
+    state: restarted
+
+# tasks file for novivano

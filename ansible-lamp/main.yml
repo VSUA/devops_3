@@ -1,0 +1,9 @@
+---
+- hosts: all
+  remote_user: vs150502
+  become: yes
+  roles:
+   - apache
+   - mysql
+   - php
+   - novinano
