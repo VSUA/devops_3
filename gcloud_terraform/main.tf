@@ -43,13 +43,11 @@ resource "google_compute_instance" "appserver" {
   }
 }
 
-resource "google_compute_network" "vpc_network" {
-  name = "my-network-184"
-}
+
 
 resource "google_compute_firewall" "default" {
   name    = "test-firewall"
-  network = google_compute_network.vpc_network.name
+  network = google_compute_instance.appserver.network_interface.network
 
   allow {
     protocol = "tcp"
